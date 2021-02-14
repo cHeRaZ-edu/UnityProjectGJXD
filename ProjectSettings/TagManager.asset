@@ -18,6 +18,8 @@ TagManager:
   - UIGameOver
   - UIWin
   - UIManager
+  - Text
+  - targetAboveUI
   layers:
   - Default
   - TransparentFX
