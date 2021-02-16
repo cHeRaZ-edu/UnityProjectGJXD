@@ -13,15 +13,16 @@ public class GameManager : MonoBehaviour
     //Variable in game
     private bool isPauseGame = false;
     public PlayerController player;
-    public SceneManagerItems sceneManagerItems = new SceneManagerItems();
+    public SceneManagerItems sceneManagerItems;
     public bool GetIsPauseGame() {
         return isPauseGame;
     }
     //Start Game
     public void StartGame() {
-        player = new PlayerController();
-        sceneManagerItems.Clear();
-        SceneManager.LoadScene("Level");
+        //Reniciar
+        //sceneManagerItems
+        //player
+        SceneManager.LoadScene("2A");
     }
     public void InitialMenu() {
         SceneManager.LoadScene("Menu");
@@ -45,12 +46,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(nameScene);
     }
     public void RespawnGame(Transform transform) {
-        if(player == null) {
+        player = this.gameObject.GetComponent<PlayerController>();
+        if (player == null) {
             this.gameObject.AddComponent(typeof (PlayerController));
             this.player = this.gameObject.GetComponent<PlayerController>();
         }
         Possess(transform);
-        sceneManagerItems.RemoveItemsTaked();
+        //sceneManagerItems.RemoveItemsTaked();
     }
     public void TakeItem(GameObject go, ItemGame.ItemGameType mType) {
         sceneManagerItems.pushItem(go,mType);
